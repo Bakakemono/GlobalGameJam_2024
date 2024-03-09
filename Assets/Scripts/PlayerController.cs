@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     float _speed = 4f;
 
+    //Camera Settings
     public float Sensitivity {
         get { return _sensitivity; }
         set { _sensitivity = value; }
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     Vector2 _rotation = Vector2.zero;
     const string _xAxis = "Mouse X"; //Strings in direct code generate garbage, storing and re-using them creates no garbage
     const string _yAxis = "Mouse Y";
+
+    //Interactions
+    [SerializeField] LayerMask _doorLayer;
 
     private void Awake() {
         _inputActionController = new InputActionController();
@@ -43,13 +47,16 @@ public class PlayerController : MonoBehaviour
         _movement.Enable();
 
         _mousePostion = _inputActionController.PlayerControl.MousePosition;
+
+        _inputActionController.PlayerControl.Interact.performed += Interact;
+        _inputActionController.PlayerControl.Interact.Enable();
     }
 
     private void FixedUpdate() {
         Vector3 input = _movement.ReadValue<Vector2>();
 
         Vector3 trueForward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized;
-        _rigidbody.velocity = trueForward * input.y * _speed;
+        _rigidbody.velocity = (trueForward * input.y + new Vector3(trueForward.z, 0, -trueForward.x) * input.x).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
         _rotation.x += Input.GetAxis(_xAxis) * _sensitivity;
         _rotation.y += Input.GetAxis(_yAxis) * _sensitivity;
@@ -58,6 +65,15 @@ public class PlayerController : MonoBehaviour
         var yQuat = Quaternion.AngleAxis(_rotation.y, Vector3.left);
 
         _cameraTransform.localRotation = xQuat * yQuat;
+    }
 
+    void Interact(InputAction.CallbackContext context) {
+        RaycastHit hit;
+        Debug.Log("Interact");
+        Debug.DrawRay(_cameraTransform.position, _cameraTransform.forward, Color.red, 1f);
+        if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, 1.5f, _doorLayer)) {
+            Debug.Log("HIT");
+            hit.transform.GetComponent<Door>().OpenDoor();
+        }
     }
 }

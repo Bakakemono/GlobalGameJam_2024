@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
         _magicalDoorManager = FindObjectOfType<MagicalDoorsManager>();
     }
 
-    void OpenDoor() {
+    public void OpenDoor() {
         if(_isLeftDoor) {
             _magicalDoorManager.OpenLeftDoor();
         }
