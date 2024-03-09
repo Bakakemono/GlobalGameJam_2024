@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,13 +18,17 @@ public class MagicalDoorsManager : MonoBehaviour
     int currentIndex = 0;
 
     public void OpenLeftDoor() {
+        if(currentIndex + 1 < _choices.Count)
+            _choices[currentIndex].Effect();
+
         SetPlayerAtFirstDoor();
-        _choices[currentIndex].Effect();
         currentIndex += 2;
     }
     public void OpenRightDoor() {
+        if(currentIndex + 1 < _choices.Count)
+            _choices[currentIndex + 1].Effect();
+
         SetPlayerAtFirstDoor();
-        _choices[currentIndex].Effect();
         currentIndex += 2;
     }
 

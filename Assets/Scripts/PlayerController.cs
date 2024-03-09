@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
         get { return _sensitivity; }
         set { _sensitivity = value; }
     }
-    [Range(0.1f, 9f)][SerializeField] float _sensitivity = 2f;
+    [Range(0.1f, 9f)][SerializeField] float _sensitivity = 4f;
+    float _mouseSensitivityMultiplier = 4f;
+    float _minSensitivity = 0.5f;
+    float _maxSensitivity = 12f;
     [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
     [Range(0f, 90f)][SerializeField] float _yRotationLimit = 88f;
 
@@ -31,6 +34,13 @@ public class PlayerController : MonoBehaviour
 
     //Interactions
     [SerializeField] LayerMask _doorLayer;
+
+    //Restrictions
+    bool _noJump = false;
+    bool _noLeftTurn = false;
+    bool _inverseControle = false;
+    
+    
 
     private void Awake() {
         _inputActionController = new InputActionController();
@@ -69,11 +79,18 @@ public class PlayerController : MonoBehaviour
 
     void Interact(InputAction.CallbackContext context) {
         RaycastHit hit;
-        Debug.Log("Interact");
         Debug.DrawRay(_cameraTransform.position, _cameraTransform.forward, Color.red, 1f);
         if(Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out hit, 1.5f, _doorLayer)) {
-            Debug.Log("HIT");
             hit.transform.GetComponent<Door>().OpenDoor();
         }
     }
+
+    public void ModifyMouseSensitivity(bool increase) {
+        _sensitivity = 
+            increase ?
+            _maxSensitivity :
+            _minSensitivity;
+    }
+    
+    
 }
