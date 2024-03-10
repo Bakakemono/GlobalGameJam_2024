@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
 
     Transform _cameraTransform;
 
-    float _speed = 4f;
+    [SerializeField] float _speed = 4f;
+    [SerializeField] float _jumpHeight = 1f;
+    [SerializeField] Transform _jumpDetectionBoxPos;
+    [SerializeField] LayerMask _jumpLayerMask;
 
     //Camera Settings
     public float Sensitivity {
@@ -38,8 +41,8 @@ public class PlayerController : MonoBehaviour
     bool _noJump = false;
     bool _noLeftTurn = false;
     bool _inverseControle = false;
-    
-    
+
+    bool _lock = false;
 
     private void Awake() {
         _inputActionController = new InputActionController();
@@ -55,21 +58,27 @@ public class PlayerController : MonoBehaviour
         _movement = _inputActionController.PlayerControl.Movement;
         _movement.Enable();
 
-        _mousePostion = _inputActionController.PlayerControl.MousePosition;
-        _mousePostion.Enable();
-
         _inputActionController.PlayerControl.Interact.performed += Interact;
         _inputActionController.PlayerControl.Interact.Enable();
+
+        _inputActionController.PlayerControl.Jump.performed += DoJump;
+        _inputActionController.PlayerControl.Jump.Enable();
     }
 
     private void FixedUpdate() {
+        if(_lock) {
+            _cameraTransform.forward = Vector3.Lerp(_cameraTransform.forward, Vector3.forward, 0.1f);
+            return;
+        }
         Vector3 input = _movement.ReadValue<Vector2>();
 
-        Vector3 trueForward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized;
-        _rigidbody.velocity = (trueForward * input.y + new Vector3(trueForward.z, 0, -trueForward.x) * input.x).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
+        Vector3 cameraForward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized;
+        _rigidbody.velocity = (cameraForward * input.y + new Vector3(cameraForward.z, 0, -cameraForward.x) * (_noLeftTurn && input.x < 0f ? 0f : input.x)).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
-        Vector2 mousePos = _mousePostion.ReadValue<Vector2>();
-        _rotation.x += Input.GetAxis("Mouse X") * _sensitivity;
+        float mouseX = Input.GetAxis("Mouse X");
+        if(!_noLeftTurn || (_noLeftTurn && mouseX > 0))
+            _rotation.x += Input.GetAxis("Mouse X") * _sensitivity;
+
         _rotation.y += Input.GetAxis("Mouse Y") * _sensitivity;
         _rotation.y = Mathf.Clamp(_rotation.y, -_yRotationLimit, _yRotationLimit);
         var xQuat = Quaternion.AngleAxis(_rotation.x, Vector3.up);
@@ -86,6 +95,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void DoJump(InputAction.CallbackContext context) {
+        if(_noJump)
+            return;
+
+        if(Physics.OverlapBox(
+            _jumpDetectionBoxPos.position, new Vector3(0.2f, 0.1f, 0.2f), Quaternion.identity, _jumpLayerMask).Length == 0)
+            return;
+
+
+        _rigidbody.velocity =
+            new Vector3(
+                _rigidbody.velocity.x,
+                Mathf.Sqrt(2 * -Physics.gravity.y * (_jumpHeight + 0.2f)),
+                _rigidbody.velocity.z
+                );
+    }
+
     public void ModifyMouseSensitivity(bool increase) {
         _sensitivity = 
             increase ?
@@ -95,5 +121,17 @@ public class PlayerController : MonoBehaviour
 
     public void DisableJump() {
         _noJump = true;
+    }
+
+    public void DisableTurningLeft() {
+        _noLeftTurn = true;
+    }
+    
+    public void LockPlayer() {
+        _lock = true;
+    }
+
+    public void UnlockPlayer() {
+        _lock = false;
     }
 }
