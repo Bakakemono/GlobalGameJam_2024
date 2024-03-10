@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4042037183713783897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247323584573762082}
+  - component: {fileID: 8324590555387640272}
+  m_Layer: 0
+  m_Name: MagicDoorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1247323584573762082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042037183713783897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8324590555387640272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042037183713783897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a500edab5afddc4487389bef5424b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enteryDoorLocation: {fileID: 0}
+  _leftDoorLocation: {fileID: 0}
+  _rightDoorLocation: {fileID: 0}
+  _choices:
+  - {fileID: 11400000, guid: 5098ccf98c7864a41b1c290f011d7532, type: 2}
+  - {fileID: 11400000, guid: af91b7a3b1e0cf64d8afdfb889fcbe9c, type: 2}
+  - {fileID: 11400000, guid: e44a43c6f7d1b304cb23f42aef9c900c, type: 2}
+  - {fileID: 11400000, guid: 67080ec52ebb8274aa5a38f42f5bbb87, type: 2}
+  - {fileID: 11400000, guid: 8889b9f63cf8d384ba7ac2cbc9ac5cbd, type: 2}
+  - {fileID: 11400000, guid: 4d1ccba24c314664bb929a77b32192a9, type: 2}
+  - {fileID: 11400000, guid: a14179fafe3c3d844a25dc89a0a5381a, type: 2}
+  - {fileID: 11400000, guid: 2b180b98c2b1e8548bc0aff4d0f13a7c, type: 2}
+  - {fileID: 11400000, guid: 4050580dfa5f6a244be0b7c63145551a, type: 2}
+  - {fileID: 11400000, guid: 1c59f9ab102bd244799a636af09b7877, type: 2}
+  - {fileID: 11400000, guid: 30379da878b2c0c43afed8dcb56e3665, type: 2}
+  - {fileID: 11400000, guid: c5c05141b4762b344bdbe4d206e6cf5e, type: 2}
+  - {fileID: 11400000, guid: dccbd96abf1585f48abc03c9508b1f94, type: 2}
+  - {fileID: 11400000, guid: 78b435e2ead3d844e91a51403d7ef5f0, type: 2}
+  - {fileID: 11400000, guid: ee18e1e219377b64aa6d1c5ab50a3666, type: 2}
+  - {fileID: 11400000, guid: bd334138f9923b9498a015c1a828295d, type: 2}
+  - {fileID: 11400000, guid: 155159c3f95d9254fa3061e940010e5c, type: 2}
+  - {fileID: 11400000, guid: a9390f4ae5c44cf4f9b9832365921316, type: 2}
+  - {fileID: 11400000, guid: 2b04b7532ceef1b43a169eb638e891b4, type: 2}
+  - {fileID: 11400000, guid: 72f8e09b4811285499c9c2a4366ac2c6, type: 2}
+  - {fileID: 11400000, guid: 83eb664a2b8f14348b757e8c7678bcc5, type: 2}
+  - {fileID: 11400000, guid: 59bd439f5f21cb146b4cf340e3d37eb2, type: 2}
+  - {fileID: 11400000, guid: 47d2fe20b14f1c542b4e36b63946301a, type: 2}
+  - {fileID: 11400000, guid: 47d2fe20b14f1c542b4e36b63946301a, type: 2}

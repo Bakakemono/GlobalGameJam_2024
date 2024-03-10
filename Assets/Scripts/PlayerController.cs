@@ -72,13 +72,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
         Vector3 input = _movement.ReadValue<Vector2>();
+        input *= _inverseControle ? -1 : 1;
 
         Vector3 cameraForward = new Vector3(_cameraTransform.forward.x, _noGravity ? _cameraTransform.forward.y : 0f, _cameraTransform.forward.z).normalized;
         _rigidbody.velocity = (cameraForward * input.y + new Vector3(cameraForward.z, 0, -cameraForward.x) * (_noLeftTurn && input.x < 0f ? 0f : input.x)).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
         float mouseX = Input.GetAxis("Mouse X");
         if(!_noLeftTurn || (_noLeftTurn && mouseX > 0))
-            _rotation.x += Input.GetAxis("Mouse X") * _sensitivity;
+            _rotation.x += mouseX * _sensitivity;
 
         _rotation.y += Input.GetAxis("Mouse Y") * _sensitivity;
         _rotation.y = Mathf.Clamp(_rotation.y, -_yRotationLimit, _yRotationLimit);
@@ -132,7 +133,11 @@ public class PlayerController : MonoBehaviour
         _rigidbody.useGravity = false;
         _noGravity = true;
     }
-    
+
+    public void InverseControl() {
+        _inverseControle = true;
+    }
+
     public void LockPlayer() {
         _lock = true;
     }

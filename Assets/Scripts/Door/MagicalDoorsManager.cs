@@ -74,7 +74,7 @@ public class MagicalDoorsManager : MonoBehaviour
                 break;
             case DoorCrossingStep.CROSSING_FRONTDOOR:
                 Vector3 newPos = new Vector3(_enteryDoorLocation.position.x, 0, _enteryDoorLocation.position.z) + Vector3.forward * 1f + Vector3.up * 0.9f;
-                _playerTransform.position = Vector3.Lerp(_playerTransform.position, newPos, 0.3f * Time.fixedDeltaTime);
+                _playerTransform.position = Vector3.Lerp(_playerTransform.position, newPos, 0.5f * Time.fixedDeltaTime);
 
                 if((_playerTransform.position - newPos).sqrMagnitude < 0.1f * 0.1f) {
                     _playerTransform.position = newPos;
