@@ -3,7 +3,17 @@ guid: eeed25ea8f906c5438315564f24ac5c0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miroir_bois
+    second: {fileID: 2100000, guid: 736e68de7a2401742ae34f5c956cfa80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miroir_image
+    second: {fileID: 2100000, guid: c0d96e0c5762f0b40b8b6103da16cc90, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
