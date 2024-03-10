@@ -1478,7 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enteryDoorLocation: {fileID: 1050211654}
   _choices:
-  - {fileID: 11400000, guid: 1ca6fbd1b47ef4a468cee88a32b762a4, type: 2}
+  - {fileID: 11400000, guid: e33f813bf2ab53b4a9d772bd8b18df4c, type: 2}
   - {fileID: 11400000, guid: 8e3ae4dfbecaefe4eaf5e28005b4dbad, type: 2}
   - {fileID: 11400000, guid: 4c1cb9d71fa8fce49a2ff60cbafb91a3, type: 2}
   - {fileID: 11400000, guid: 8e3ae4dfbecaefe4eaf5e28005b4dbad, type: 2}

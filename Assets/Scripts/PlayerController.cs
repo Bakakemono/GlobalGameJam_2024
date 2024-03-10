@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
         set { _sensitivity = value; }
     }
     [Range(0.1f, 9f)][SerializeField] float _sensitivity = 4f;
-    float _mouseSensitivityMultiplier = 4f;
     float _minSensitivity = 0.5f;
     float _maxSensitivity = 12f;
     [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
@@ -57,6 +56,7 @@ public class PlayerController : MonoBehaviour
         _movement.Enable();
 
         _mousePostion = _inputActionController.PlayerControl.MousePosition;
+        _mousePostion.Enable();
 
         _inputActionController.PlayerControl.Interact.performed += Interact;
         _inputActionController.PlayerControl.Interact.Enable();
@@ -68,8 +68,9 @@ public class PlayerController : MonoBehaviour
         Vector3 trueForward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized;
         _rigidbody.velocity = (trueForward * input.y + new Vector3(trueForward.z, 0, -trueForward.x) * input.x).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
-        _rotation.x += Input.GetAxis(_xAxis) * _sensitivity;
-        _rotation.y += Input.GetAxis(_yAxis) * _sensitivity;
+        Vector2 mousePos = _mousePostion.ReadValue<Vector2>();
+        _rotation.x += Input.GetAxis("Mouse X") * _sensitivity;
+        _rotation.y += Input.GetAxis("Mouse Y") * _sensitivity;
         _rotation.y = Mathf.Clamp(_rotation.y, -_yRotationLimit, _yRotationLimit);
         var xQuat = Quaternion.AngleAxis(_rotation.x, Vector3.up);
         var yQuat = Quaternion.AngleAxis(_rotation.y, Vector3.left);
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
             _maxSensitivity :
             _minSensitivity;
     }
-    
-    
+
+    public void DisableJump() {
+        _noJump = true;
+    }
 }
