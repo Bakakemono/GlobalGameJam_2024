@@ -3290,6 +3290,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79ec757356ebdce4592ec6033ccce6bf, type: 3}
+--- !u!1 &1264588205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264588207}
+  - component: {fileID: 1264588206}
+  m_Layer: 0
+  m_Name: MagicDoorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1264588206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264588205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a500edab5afddc4487389bef5424b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enteryDoorLocation: {fileID: 0}
+  _leftDoorLocation: {fileID: 0}
+  _rightDoorLocation: {fileID: 0}
+  _choices:
+  - {fileID: 11400000, guid: 5098ccf98c7864a41b1c290f011d7532, type: 2}
+  - {fileID: 11400000, guid: af91b7a3b1e0cf64d8afdfb889fcbe9c, type: 2}
+  - {fileID: 11400000, guid: e44a43c6f7d1b304cb23f42aef9c900c, type: 2}
+  - {fileID: 11400000, guid: 67080ec52ebb8274aa5a38f42f5bbb87, type: 2}
+  - {fileID: 11400000, guid: 8889b9f63cf8d384ba7ac2cbc9ac5cbd, type: 2}
+  - {fileID: 11400000, guid: 4d1ccba24c314664bb929a77b32192a9, type: 2}
+  - {fileID: 11400000, guid: a14179fafe3c3d844a25dc89a0a5381a, type: 2}
+  - {fileID: 11400000, guid: 2b180b98c2b1e8548bc0aff4d0f13a7c, type: 2}
+  - {fileID: 11400000, guid: 4050580dfa5f6a244be0b7c63145551a, type: 2}
+  - {fileID: 11400000, guid: 1c59f9ab102bd244799a636af09b7877, type: 2}
+  - {fileID: 11400000, guid: 30379da878b2c0c43afed8dcb56e3665, type: 2}
+  - {fileID: 11400000, guid: c5c05141b4762b344bdbe4d206e6cf5e, type: 2}
+--- !u!4 &1264588207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264588205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1310431547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5062,3 +5122,4 @@ SceneRoots:
   - {fileID: 1115622891}
   - {fileID: 360426192}
   - {fileID: 2145599799}
+  - {fileID: 1264588207}

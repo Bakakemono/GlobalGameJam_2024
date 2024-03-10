@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     bool _noJump = false;
     bool _noLeftTurn = false;
     bool _inverseControle = false;
+    bool _noGravity = false;
 
     bool _lock = false;
 
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
         Vector3 input = _movement.ReadValue<Vector2>();
 
-        Vector3 cameraForward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z).normalized;
+        Vector3 cameraForward = new Vector3(_cameraTransform.forward.x, _noGravity ? _cameraTransform.forward.y : 0f, _cameraTransform.forward.z).normalized;
         _rigidbody.velocity = (cameraForward * input.y + new Vector3(cameraForward.z, 0, -cameraForward.x) * (_noLeftTurn && input.x < 0f ? 0f : input.x)).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
         float mouseX = Input.GetAxis("Mouse X");
@@ -125,6 +126,11 @@ public class PlayerController : MonoBehaviour
 
     public void DisableTurningLeft() {
         _noLeftTurn = true;
+    }
+
+    public void DisableGravity() {
+        _rigidbody.useGravity = false;
+        _noGravity = true;
     }
     
     public void LockPlayer() {

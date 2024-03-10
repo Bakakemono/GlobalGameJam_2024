@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86a5e8c4e8127b42a3123e6433acaa7, type: 3}
-  m_Name: SC_ReduceQualitySetting
+  m_Script: {fileID: 11500000, guid: 83be4deeeb080e5429bb9898420732b0, type: 3}
+  m_Name: SO_RemoveBloc
   m_EditorClassIdentifier: 

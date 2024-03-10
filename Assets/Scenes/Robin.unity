@@ -1471,6 +1471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enteryDoorLocation: {fileID: 1050211654}
+  _leftDoorLocation: {fileID: 0}
+  _rightDoorLocation: {fileID: 0}
   _choices:
   - {fileID: 11400000, guid: e33f813bf2ab53b4a9d772bd8b18df4c, type: 2}
   - {fileID: 11400000, guid: 8e3ae4dfbecaefe4eaf5e28005b4dbad, type: 2}
@@ -1734,6 +1736,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0594239e13cdf4eacb8f02d3c87b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 4
+  _jumpHeight: 1
+  _jumpDetectionBoxPos: {fileID: 0}
+  _jumpLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   _sensitivity: 4
   _yRotationLimit: 88
   _doorLayer:
