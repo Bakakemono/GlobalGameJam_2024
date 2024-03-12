@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class MagicalDoorsManager : MonoBehaviour
 {
+    
+    //
     public enum DoorCrossingStep {
         CENTERING,
         TP_TO_FRONTDOOR,
