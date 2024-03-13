@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
         input *= _inverseControle ? -1 : 1;
 
         Vector3 cameraForward = new Vector3(_cameraTransform.forward.x, _noGravity ? _cameraTransform.forward.y : 0f, _cameraTransform.forward.z).normalized;
-        _rigidbody.velocity = (cameraForward * input.y + new Vector3(cameraForward.z, 0, -cameraForward.x) * (_noLeftTurn && input.x < 0f ? 0f : input.x)).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
+        _rigidbody.velocity =
+            (cameraForward * input.y + new Vector3(cameraForward.z, 0, -cameraForward.x) * (_noLeftTurn && input.x < 0f ? 0f : input.x)).normalized * _speed + Vector3.up * _rigidbody.velocity.y;
 
         float mouseX = Input.GetAxis("Mouse X");
         if(!_noLeftTurn || (_noLeftTurn && mouseX > 0))
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         if(Physics.OverlapBox(
-            _jumpDetectionBoxPos.position, new Vector3(0.2f, 0.1f, 0.2f), Quaternion.identity, _jumpLayerMask).Length == 0)
+            _jumpDetectionBoxPos.position, new Vector3(0.2f, 0.3f, 0.2f), Quaternion.identity, _jumpLayerMask).Length == 0)
             return;
 
 

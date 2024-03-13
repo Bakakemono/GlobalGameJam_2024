@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3ecc0e30b6ebc42a5c6f7a71cb577b, type: 3}
   m_Name: SO_DestroyLeftDoor
   m_EditorClassIdentifier: 
+  _doorMessage: Left
+  _destroyLeftDoor: 1

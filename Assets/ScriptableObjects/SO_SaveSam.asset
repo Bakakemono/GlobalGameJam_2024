@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ec69f311cc738439a313f31dcd0005, type: 3}
   m_Name: SO_SaveSam
   m_EditorClassIdentifier: 
+  _doorMessage: The One Ring

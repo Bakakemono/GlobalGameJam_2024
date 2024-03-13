@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31881f626403684e976b209220938f2, type: 3}
   m_Name: SO_ActivateChauldron
   m_EditorClassIdentifier: 
+  _doorMessage: Hunger

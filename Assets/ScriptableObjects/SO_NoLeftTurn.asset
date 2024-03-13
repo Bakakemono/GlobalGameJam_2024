@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47ea9b5d489d924cbc0b3b512de7796, type: 3}
   m_Name: SO_NoLeftTurn
   m_EditorClassIdentifier: 
+  _doorMessage: The Left

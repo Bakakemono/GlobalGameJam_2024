@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7306668c7e0af824bbdcad9a6188632b, type: 3}
   m_Name: SO_MaxFov
   m_EditorClassIdentifier: 
+  _doorMessage: Ignorance

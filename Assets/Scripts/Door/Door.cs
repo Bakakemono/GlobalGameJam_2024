@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] bool _isLeftDoor;
+    [SerializeField] public bool _isLeftDoor;
 
     MagicalDoorsManager _magicalDoorManager;
 

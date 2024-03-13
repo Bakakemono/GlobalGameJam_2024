@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63a05d26e59b904aa041884775ed3f8, type: 3}
   m_Name: SO_NightFall
   m_EditorClassIdentifier: 
+  _doorMessage: The Sun

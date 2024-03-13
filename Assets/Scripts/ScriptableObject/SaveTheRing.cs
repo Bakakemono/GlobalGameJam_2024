@@ -6,6 +6,6 @@ using UnityEngine;
 public class SaveTheRing : Choice
 {
     public override void Effect() {
-        FindObjectsOfType<Tombstone>()[0].gameObject.SetActive(true);
+        FindObjectOfType<Tombstone>().Activate();
     }
 }

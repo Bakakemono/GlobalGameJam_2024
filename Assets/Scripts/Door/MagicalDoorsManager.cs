@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class MagicalDoorsManager : MonoBehaviour
 {
-    
-    //
     public enum DoorCrossingStep {
         CENTERING,
         TP_TO_FRONTDOOR,
@@ -22,38 +21,52 @@ public class MagicalDoorsManager : MonoBehaviour
     Transform _playerTransform;
     PlayerController _playerController;
 
-    [SerializeField] Transform _enteryDoorLocation;
+    [SerializeField] Transform _entryDoorLocation;
     [SerializeField] Transform _leftDoorLocation;
     [SerializeField] Transform _rightDoorLocation;
 
     Vector3 _relativePosInFrontOfDoor = Vector3.back;
 
     [SerializeField] List<Choice> _choices;
+
+    TextMeshProUGUI _textLeftDoor;
+    TextMeshProUGUI _textRightDoor;
+    TextMeshProUGUI _textEntryDoor;
+
     private void Start() {
         _playerController = FindObjectOfType<PlayerController>();
         _playerTransform = _playerController.transform;
+
+        _textEntryDoor = _entryDoorLocation.GetComponentInChildren<TextMeshProUGUI>();
+        _textLeftDoor = _leftDoorLocation.GetComponentInChildren<TextMeshProUGUI>();
+        _textRightDoor = _rightDoorLocation.GetComponentInChildren<TextMeshProUGUI>();
+        _textLeftDoor.text = _choices[_currentIndex]._doorMessage;
+        _textRightDoor.text = _choices[_currentIndex + 1]._doorMessage;
+
     }
-    int currentIndex = 0;
+    int _currentIndex = 0;
+    int _indexShift = 0;
 
     public void OpenLeftDoor() {
         _playerTransform.GetComponent<Rigidbody>().isKinematic = true;
-        if(currentIndex + 1 < _choices.Count)
-            _choices[currentIndex].Effect();
+        _indexShift = 0;
 
         _playerController.LockPlayer();
         _aimedDoor = _leftDoorLocation;
         _step = DoorCrossingStep.CENTERING;
-        currentIndex += 2;
+
+        _textEntryDoor.text = _textLeftDoor.text;
     }
+
     public void OpenRightDoor() {
         _playerTransform.GetComponent<Rigidbody>().isKinematic = true;
-        if(currentIndex + 1 < _choices.Count)
-            _choices[currentIndex + 1].Effect();
+        _indexShift = 1;
 
         _playerController.LockPlayer();
         _aimedDoor = _rightDoorLocation;
         _step = DoorCrossingStep.CENTERING;
-        currentIndex += 2;
+
+        _textEntryDoor.text = _textRightDoor.text;
     }
 
     private void FixedUpdate() {
@@ -72,18 +85,23 @@ public class MagicalDoorsManager : MonoBehaviour
                 }
                 break;
             case DoorCrossingStep.TP_TO_FRONTDOOR:
-                _playerTransform.position = new Vector3(_enteryDoorLocation.position.x, 0, _enteryDoorLocation.position.z) + _relativePosInFrontOfDoor + Vector3.up * 0.9f;
+                _playerTransform.position = new Vector3(_entryDoorLocation.position.x, 0, _entryDoorLocation.position.z) + _relativePosInFrontOfDoor + Vector3.up * 0.9f;
                 _step = DoorCrossingStep.CROSSING_FRONTDOOR;
+                _choices[_currentIndex + _indexShift].Effect();
                 break;
             case DoorCrossingStep.CROSSING_FRONTDOOR:
-                Vector3 newPos = new Vector3(_enteryDoorLocation.position.x, 0, _enteryDoorLocation.position.z) + Vector3.forward * 1f + Vector3.up * 0.9f;
-                _playerTransform.position = Vector3.Lerp(_playerTransform.position, newPos, 0.5f * Time.fixedDeltaTime);
+                Vector3 newPos = new Vector3(_entryDoorLocation.position.x, 0, _entryDoorLocation.position.z) + Vector3.forward * 1f + Vector3.up * 0.9f;
+                _playerTransform.position = Vector3.Lerp(_playerTransform.position, newPos, 1.0f * Time.fixedDeltaTime);
 
-                if((_playerTransform.position - newPos).sqrMagnitude < 0.1f * 0.1f) {
+                if((_playerTransform.position - newPos).sqrMagnitude < 0.2f * 0.2f) {
                     _playerTransform.position = newPos;
                     _step = DoorCrossingStep.CROSSED;
                     _playerTransform.GetComponent<Rigidbody>().isKinematic = false;
                     _playerController.UnlockPlayer();
+                    _currentIndex += 2;
+
+                    _textLeftDoor.text = _choices[_currentIndex]._doorMessage;
+                    _textRightDoor.text = _choices[_currentIndex + 1]._doorMessage;
                 }
                 break;
             case DoorCrossingStep.CROSSED:
@@ -92,6 +110,6 @@ public class MagicalDoorsManager : MonoBehaviour
     }
 
     void SetPlayerAtFirstDoor() {
-        _playerTransform.position = _enteryDoorLocation.position;
+        _playerTransform.position = _entryDoorLocation.position;
     }
 }

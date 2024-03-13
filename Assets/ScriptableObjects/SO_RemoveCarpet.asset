@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c73aabc0cffaeb42b9dfa461833f63f, type: 3}
   m_Name: SO_RemoveCarpet
   m_EditorClassIdentifier: 
+  _doorMessage: Carpet

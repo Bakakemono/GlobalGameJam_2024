@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ac7e353b5b36745ba81c555b657aec, type: 3}
   m_Name: SO_ActivateFondue
   m_EditorClassIdentifier: 
+  _doorMessage: Fondue

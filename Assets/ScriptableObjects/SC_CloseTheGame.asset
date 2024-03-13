@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8133c4888572e64e9014d379028bb99, type: 3}
   m_Name: SC_CloseTheGame
   m_EditorClassIdentifier: 
+  _doorMessage: Me

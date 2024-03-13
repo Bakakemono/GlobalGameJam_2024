@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b123dd0ea6328c84d96ed25e27dfb34a, type: 3}
-  m_Name: SO_ScaleUp
+  m_Script: {fileID: 11500000, guid: 76185dbe1f265af418ea101b20b04431, type: 3}
+  m_Name: Left
   m_EditorClassIdentifier: 
-  _doorMessage: Sens of scale
+  _doorMessage: Left

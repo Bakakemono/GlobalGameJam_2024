@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2482d2700c3810849918c5a85362fd53, type: 3}
   m_Name: SO_RemoveFish
   m_EditorClassIdentifier: 
+  _doorMessage: Joshua

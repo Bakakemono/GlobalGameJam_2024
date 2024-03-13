@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2dc36cd1a519b4093b7e8d6cf9c20e, type: 3}
   m_Name: SO_RemoveTorches
   m_EditorClassIdentifier: 
+  _doorMessage: Light

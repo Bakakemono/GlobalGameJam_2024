@@ -6,6 +6,6 @@ using UnityEngine;
 public class ReduceQualitySettings : Choice
 {
     public override void Effect() {
-        QualitySettings.globalTextureMipmapLimit = 0;
+        //QualitySettings.globalTextureMipmapLimit = 0;
     }
 }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0319c11c06ec9d4b9dbd8fa055a7c7f, type: 3}
   m_Name: SO_RemoveWalls
   m_EditorClassIdentifier: 
+  _doorMessage: Shelter
